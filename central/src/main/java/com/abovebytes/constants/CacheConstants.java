@@ -1,0 +1,51 @@
+package com.abovebytes.constants;
+
+public class CacheConstants {
+    public static final String REDIS_USE_AUTH = "redis.use.auth";
+    public static final String REDIS_AUTH_PASSWORD = "redis.auth.password";
+    public static final String REDIS_HOST = "redis.host";
+    public static final String REDIS_PORT = "redis.port";
+    public static final String REDIS_CACHE_EXPIRATION_MINUTES = "redis.cache.expiration.minutes";
+    public static final String REDIS_CACHE_NAME_KEY_DELIMITER = "::";
+    public static final String REDIS_USE_POOL = "redis.usepool";
+    public static final String REDIS_USE_SSL = "redis.usessl";
+    public static final String REDIS_READ_TIMEOUT_MILLISECONDS = "redis.read.timeout.milliseconds";
+    public static final String REDIS_POOL_MAX_TOTAL = "redis.pool.maxtotal";
+    public static final String REDIS_CONNECT_TIMEOUT_MILLISECONDS = "redis.connect.timeout.milliseconds";
+    public static final String REDIS_POOL_MIN_IDLE = "redis.pool.minidle";
+    public static final String REDIS_POOL_MAX_IDLE = "redis.pool.maxidle";
+    public static final String REDIS_POOL_BLOCK_WHEN_EXHAUSTED = "redis.pool.blockwhenexhausted";
+    public static final String REDIS_POOL_MAX_WAIT_MILLISECONDS = "redis.pool.maxwait.milliseconds";
+    public static final String REDIS_CACHE_NAME = "Central";
+    //HASH_KEYS
+    public static final String HASH_KEY_PICTURE = "Picture";
+    public static final String HASH_KEY_USER = "User";
+    public static final String HASH_KEY_HABITATION = "Habitation";
+    public static final String HASH_KEY_PLACES = "Places";
+    public static final String HASH_KEY_ROLE = "Role";
+    public static final String HASH_KEY_INVITE = "Invite";
+    public static final String HASH_KEY_ROLE_USER = "RoleUser";
+    public static final String HASH_KEY_PROPERTIES = "Properties";
+    public static final String HASH_KEY_PROVINCE = "Provinces";
+    public static final String HASH_KEY_CITIES = "Cities";
+    public static final String TOWNSHIP = "Township";
+    public static final String HASH_KEY_QUARTER = "Quarter";
+    public static final String HASH_KEY_STREETS = "Street";
+    public static final String HASH_KEY_CURRENCY = "Currency";
+    public static final String HASH_KEY_COUNTRY = "Country";
+    public static final String HASH_KEY_VEHICLE_MODEL_YEAR = "VehicleModelYear";
+    public static final String HASH_KEY_MOTORCYCLE_MODEL = "MotorCycleModel";
+    public static final String HASH_KEY_USER_VEHICLE = "UserVehicle";
+    public static final String HASH_KEY_USER_MOTORCYCLES = "UserMotorCycle";
+    public static final String HASH_KEY_ACTIVITIES = "Activities";
+    public static final String HASH_KEY_PENALTY = "Penalty";
+    public static final String HASH_KEY_TRAFFIC = "Traffic";
+    public static final String HASH_KEY_NOTIFICATION = "Notification";
+    public static final String HASH_KEY_SERVICE_DETAIL = "ServiceDetail";
+    public static final String EMERGENCY_CALLS = "EmergencyCalls";
+    public static final String REAL_TIME_LOCATION = "RealTimeLocation";
+    public static final String TOWNSHIP_DOCUMENTS = "TownshipDocuments";
+    public static final String DOCUMENT_REQUEST = "DocumentRequest";
+    public static final String HASH_KEY_PAYMENT = "Payments";
+    public static final String HASH_KEY_PAYMENT_HISTORY = "PaymentHistory";
+}
