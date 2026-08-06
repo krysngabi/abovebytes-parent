@@ -17,7 +17,10 @@
     </parent>
 
     <modules>
-        <module>central</module>
+        <module>central-models</module>
+        <module>commons</module>
+        <module>notifications</module>
+        <module>paymentswitch</module>
     </modules>
 
     <properties>

@@ -1,0 +1,22 @@
+package com.abovebytes.notifications.models.meta.whatsapp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
+public class Change {
+
+    private Value value;
+    private String field;
+
+    @Override
+    public String toString() {
+        return "Change{" +
+                "value=" + value +
+                ", field='" + field + '\'' +
+                '}';
+    }
+}
