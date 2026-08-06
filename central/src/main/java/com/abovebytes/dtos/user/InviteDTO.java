@@ -22,8 +22,8 @@ public class InviteDTO implements Serializable {
     private String phone;
     private String code;
     private String title;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String message;
     private boolean accepted;
     private boolean liveInSameHouse;

@@ -1,4 +1,4 @@
-package com.abovebytes.constants;
+package com.abovebytes.enums;
 
 import lombok.Getter;
 

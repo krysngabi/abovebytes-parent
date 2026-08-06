@@ -25,10 +25,10 @@ public record HabitationCreationDTO(
         String phone,
 
         @NotBlank(message = "habitation.owner.firstname.required")
-        String firstname,
+        String firstName,
 
         @NotBlank(message = "habitation.owner.lastname.required")
-        String lastname,
+        String lastName,
 
         @NotBlank(message = "habitation.password.required")
         String password,
@@ -80,8 +80,8 @@ public record HabitationCreationDTO(
                 ", address='" + address + '\'' +
                 ", phone=" + phone +
                 ", mai=" + phone +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender='" + gender.name() + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", details=" + details +

@@ -1,9 +1,12 @@
 package com.abovebytes.models.responses;
 
 import com.abovebytes.dtos.habitattion.HabitationDTO;
+import com.abovebytes.dtos.user.RoleUserDTO;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,4 +24,5 @@ public class UserSearchApiResponse {
     private String profilePicture;
     private Boolean verified;
     private Double rating;
+    private Set<RoleUserDTO> roles;
 }

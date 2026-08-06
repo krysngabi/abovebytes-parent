@@ -16,10 +16,10 @@ import java.util.List;
 public record SelfSignUpRequest(
 
         @NotBlank(message = "firstname.required")
-        String firstname,
+        String firstName,
 
         @NotBlank(message = "lastname.required")
-        String lastname,
+        String lastName,
 
         List<RoleValue> roleValues,
 
@@ -61,8 +61,8 @@ public record SelfSignUpRequest(
     // ✅ replace roles completely
     public SelfSignUpRequest withRoleValues(List<RoleValue> newRoles) {
         return new SelfSignUpRequest(
-                firstname,
-                lastname,
+                firstName,
+                lastName,
                 newRoles,
                 status,
                 gender,
@@ -85,8 +85,8 @@ public record SelfSignUpRequest(
         newRoles.add(role);
 
         return new SelfSignUpRequest(
-                firstname,
-                lastname,
+                firstName,
+                lastName,
                 newRoles,
                 status,
                 gender,
@@ -102,8 +102,8 @@ public record SelfSignUpRequest(
     @Override
     public String toString() {
         return "SelfSignUpRequest {" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender=" + gender +
                 ", phone='" + phone + '\'' +
                 ", countryId=" + countryId +

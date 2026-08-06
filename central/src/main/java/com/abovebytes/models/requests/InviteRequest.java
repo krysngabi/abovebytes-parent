@@ -15,7 +15,7 @@ public record InviteRequest(
         String code,
 
         @NotNull(message = "invitee.firstname.required")
-        String inviteeFirstname,
+        String inviteeFirstName,
 
         @NotNull(message = "invitee.lastname.required")
         String inviteeLastname,
@@ -35,7 +35,7 @@ public record InviteRequest(
                 " userPhone='" + userPhone + '\'' +
                 " adminPhone='" + adminPhone + '\'' +
                 " code='" + code + '\'' +
-                " inviteeFirstname='" + inviteeFirstname + '\'' +
+                " inviteeFirstName='" + inviteeFirstName + '\'' +
                 " inviteeLastname='" + inviteeLastname + '\'' +
                 " isOwner='" + isOwner + '\'' +
                 " gender='" + (gender != null ? gender.name() : "No gender") + '\'' +
