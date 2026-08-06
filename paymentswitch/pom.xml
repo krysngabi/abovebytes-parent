@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>paymentswitch</artifactId>
+    <artifactId>paymentswitch-models</artifactId>
     <packaging>jar</packaging>
 
     <properties>
