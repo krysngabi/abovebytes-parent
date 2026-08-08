@@ -29,7 +29,6 @@ public enum RoleValue {
         }
     }
 
-
     public String getDescription() {
         String lang = LocaleContextHolder.getLocale().getLanguage();
         return "fr".equals(lang) ? frenchDescription : englishDescription;

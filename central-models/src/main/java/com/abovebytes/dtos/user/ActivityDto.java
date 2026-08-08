@@ -29,4 +29,6 @@ public class ActivityDto implements Serializable {
     private String typeColor;
     private Long activityUserId;
     private Long habitationId;
+    private boolean pinned;
+    private LocalDateTime pinnedAt;
 }
