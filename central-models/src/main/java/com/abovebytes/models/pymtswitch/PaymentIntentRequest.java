@@ -1,5 +1,6 @@
 package com.abovebytes.models.pymtswitch;
 
+import com.abovebytes.enums.AllowedApps;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -126,6 +127,11 @@ public class PaymentIntentRequest {
             defaultValue = "false"
     )
     private boolean isFromCentralApp;
+
+    public PaymentIntentRequest withApplicationName(String applicationName) {
+        this.applicationName = applicationName;
+        return this;
+    }
 
     @Override
     public String toString() {
