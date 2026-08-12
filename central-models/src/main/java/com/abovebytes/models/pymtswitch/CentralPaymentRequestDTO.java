@@ -1,7 +1,6 @@
 package com.abovebytes.models.pymtswitch;
 
 import com.abovebytes.enums.PaymentMode;
-import com.abovebytes.enums.PaymentStatus;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,7 +31,7 @@ public record CentralPaymentRequestDTO(
         PaymentMode paymentModeType,
 
         String maxiCashReferenceId,
-        PaymentStatus paymentStatus,
+        String paymentStatus,
         String paymentIntentId,
 
         @NotNull(message = "amount.to.pay.required")

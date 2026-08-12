@@ -1,8 +1,9 @@
 package com.abovebytes.paymentswitch.dtos.payment;
 
+import com.abovebytes.paymentswitch.models.enums.PaymentStatus;
 import jakarta.validation.constraints.NotNull;
 
-public record PaymentRegistrationRequest(
+public record CentralPaymentRegistrationRequest(
         @NotNull(message = "payment.intent.id.required")
         String paymentIntentId,
 
@@ -21,14 +22,14 @@ public record PaymentRegistrationRequest(
         String amount,
 
         @NotNull(message = "status.required")
-        String status,
+        PaymentStatus status,
 
         @NotNull(message = "lang.required")
         String lang
 ) {
         @Override
         public String toString() {
-                return "PaymentCreationDTO{ " +
+                return "CentralPaymentRegistrationRequest{ " +
                         " lang='" + lang + '\'' +
                         ", paymentIntentId='" + paymentIntentId + '\'' +
                         ", internalAppCustomerId='" + internalAppCustomerId + '\'' +

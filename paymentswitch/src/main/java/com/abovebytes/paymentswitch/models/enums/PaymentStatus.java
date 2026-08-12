@@ -3,6 +3,8 @@ package com.abovebytes.paymentswitch.models.enums;
 import lombok.Getter;
 import org.springframework.context.i18n.LocaleContextHolder;
 
+import java.util.Arrays;
+
 @Getter
 public enum PaymentStatus {
     PAID("Payé", "Paid", "Green", "#00FF00"),          // Partial payment received
@@ -13,7 +15,9 @@ public enum PaymentStatus {
     REFUNDED("Remboursé",  "Refunded", "Blue", "#0000FF"),
     EXPIRED("Expiré",  "Expired", "Grey", "#A9A9A9"),
     PARTIALLY_PAID("Payé partiellement",  "Partially paid", "Blue", "#1E90FF"),
-    COMPLETED("Terminé",  "Completed", "Green", "#00FF00");          // Payment was canceled
+    COMPLETED("Terminé",  "Completed", "Green", "#00FF00"),
+    PROCESSING("En traitement", "Processing", "Orange", "#FFA500"),
+    SUCCEEDED("Réussi", "Succeeded", "Green", "#00FF00");          // Payment was canceled
 
     private final String frenchDescription;
     private final String englishDescription;
@@ -35,11 +39,14 @@ public enum PaymentStatus {
     }
 
     public static PaymentStatus getStatus(String statusString) {
-        for (PaymentStatus status : PaymentStatus.values()) {
-            if (status.name().equalsIgnoreCase(statusString)) {
-                return status;
-            }
+        if (statusString == null || statusString.isBlank()) {
+            throw new IllegalArgumentException("Payment status cannot be null or blank");
         }
-        throw new IllegalArgumentException("Invalid status: " + statusString);
+
+        return Arrays.stream(PaymentStatus.values())
+                .filter(status -> status.name().equalsIgnoreCase(statusString.trim()))
+                .findFirst()
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Invalid payment status: " + statusString));
     }
 }

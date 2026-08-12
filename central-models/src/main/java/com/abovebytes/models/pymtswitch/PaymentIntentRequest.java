@@ -112,7 +112,6 @@ public class PaymentIntentRequest {
             },
             example = "Central"
     )
-    @NotNull(message = "application.name.required")
     private String applicationName;
 
     @Schema(
