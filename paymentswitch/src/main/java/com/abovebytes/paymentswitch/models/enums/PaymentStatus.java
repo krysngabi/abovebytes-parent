@@ -7,7 +7,8 @@ import java.util.Arrays;
 
 @Getter
 public enum PaymentStatus {
-    PAID("Payé", "Paid", "Green", "#00FF00"),          // Partial payment received
+    PAID("Payé", "Paid", "Green", "#00FF00"),
+    PENDING("En attente", "Pending", "Orange", "#FFA500"),
     UNPAID("Non payé", "Unpaid", "Orange", "#FFA500"),
     INITIATED("Initié", "Initiated", "Grey", "#808080"),
     FAILED("Échoué", "Failed",  "Red", "#FF0000"),
@@ -17,7 +18,9 @@ public enum PaymentStatus {
     PARTIALLY_PAID("Payé partiellement",  "Partially paid", "Blue", "#1E90FF"),
     COMPLETED("Terminé",  "Completed", "Green", "#00FF00"),
     PROCESSING("En traitement", "Processing", "Orange", "#FFA500"),
-    SUCCEEDED("Réussi", "Succeeded", "Green", "#00FF00");          // Payment was canceled
+    SUCCEEDED("Réussi", "Succeeded", "Green", "#00FF00"),
+    PARTIALLY_REFUNDED("Partiellement remboursé", "Partially refunded", "Blue", "#1E90FF"),
+    ;          // Payment was canceled
 
     private final String frenchDescription;
     private final String englishDescription;
