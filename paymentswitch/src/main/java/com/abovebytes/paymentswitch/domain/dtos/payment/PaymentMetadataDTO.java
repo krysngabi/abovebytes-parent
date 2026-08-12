@@ -1,8 +1,14 @@
 package com.abovebytes.paymentswitch.domain.dtos.payment;
 
-import lombok.Builder;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Schema(name = "PaymentMetadataDTO")
 public class PaymentMetadataDTO {
     private String customerName;
     private String customerId;
