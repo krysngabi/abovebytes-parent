@@ -1,0 +1,18 @@
+package com.abovebytes.paymentswitch.domain.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Response {
+    private Integer errorCode;
+    private boolean status;
+    private String message;
+    private String token;
+    private String accountBalance;
+    private String title;
+    private String merchantOnboardingUrl;
+}
