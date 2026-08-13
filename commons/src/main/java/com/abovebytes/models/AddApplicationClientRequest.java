@@ -1,15 +1,13 @@
-package com.abovebytes.notifications.models;
+package com.abovebytes.models;
 
-import com.abovebytes.notifications.enums.RoleValue;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-
 import java.util.Arrays;
 import java.util.List;
 
-public record AddUserRequest(
+public record AddApplicationClientRequest(
         String phone,
 
         @NotNull(message = "app.name.required")
@@ -21,13 +19,13 @@ public record AddUserRequest(
         String email,
 
         @NotNull(message = "roles.required")
-        List<RoleValue> roleValues
+        List<String> roleValues
 ) {
 
 
     @Override
     public String toString() {
-        return "AddUserRequest {" +
+        return "AddApplicationClientRequest {" +
                 "  appName='" + appName.name() + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +

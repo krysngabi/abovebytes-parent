@@ -1,5 +1,6 @@
 package com.abovebytes.notifications.models;
 
+import com.abovebytes.models.CreateEnumRequest;
 import jakarta.validation.constraints.NotNull;
 
 public record CreateOrUpdateFeatureFlagRequest(
@@ -13,7 +14,7 @@ public record CreateOrUpdateFeatureFlagRequest(
     @Override
     public String toString() {
         return "CreateOrUpdateFeatureFlagRequest{" +
-                ", appName=" + appName +
+                ", applicationName=" + appName +
                 ", name=" + name +
                 '}';
     }

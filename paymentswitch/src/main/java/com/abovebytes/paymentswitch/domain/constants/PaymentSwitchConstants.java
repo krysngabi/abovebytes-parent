@@ -19,4 +19,13 @@ public final class PaymentSwitchConstants {
     public static final int RETRY_WAIT_IN_MILLISECONDS = 1000;
 
     public static final String REFRESH_TOKEN = "refresh_token";
+    public static final String localPath = "/api/paymentswitch/users/" + REFRESH_TOKEN;
+    public static final String devPath = "/paymentswitch/users/" + REFRESH_TOKEN;
+    public static final String TRACE_ID = "payment_switch_transaction_id";
+
+    public static String[] AUTHORIZED_PATHS = new String[] {
+            "/stripe-webhooks/**",
+            "/users/login", "/users/refresh-token",
+            "/swagger-resources/**", "/swagger-resources", "/configuration/ui",
+            "/configuration/security", "/swagger-ui.html", "/webjars/**", "/v3/api-docs/**", "/swagger-ui/**"};
 }

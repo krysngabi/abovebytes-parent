@@ -8,4 +8,6 @@ public class CommonConstants {
     public static final String CURRENT_PAGE = "x-current-page";
     public static final String PAGE_SIZE = "x-page-size";
     public static final String ACCESS_CONTROL_EXPOSE_HEADERS = "x-total-elements, x-total-pages, x-is-last, x-current-page, x-page-size";
+    public static final String LANG_PARAM = "lang";
+    public static final String BEARER_ = "Bearer ";
 }

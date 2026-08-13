@@ -1,4 +1,4 @@
-package com.abovebytes.notifications.models;
+package com.abovebytes.models;
 
 import jakarta.validation.constraints.NotBlank;
 

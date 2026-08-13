@@ -8,9 +8,10 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public enum RoleValue {
-
+    APPLICATION("Application", "Application"),
     MERCHANT("Merchant", "Marchand"),
-    CUSTOMER("Customer", "Client");
+    CUSTOMER("Customer", "Client"),
+    SUPER_ADMIN("Super Admin", "Super Admin");
 
     private final String englishDescription;
     private final String frenchDescription;

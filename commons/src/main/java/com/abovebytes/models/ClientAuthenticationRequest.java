@@ -1,4 +1,4 @@
-package com.abovebytes.notifications.models;
+package com.abovebytes.models;
 import lombok.*;
 
 import java.io.Serializable;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class JwtRequest implements Serializable {
+public class ClientAuthenticationRequest implements Serializable {
     private String clientId;
     private String clientSecret;
 }

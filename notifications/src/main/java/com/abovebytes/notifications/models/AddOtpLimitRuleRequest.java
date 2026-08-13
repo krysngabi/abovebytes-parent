@@ -1,6 +1,7 @@
 package com.abovebytes.notifications.models;
 
 
+import com.abovebytes.models.CreateEnumRequest;
 import com.abovebytes.notifications.enums.OtpChannel;
 import com.abovebytes.notifications.enums.OtpLimitInterval;
 import jakarta.validation.constraints.NotNull;
