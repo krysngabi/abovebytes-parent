@@ -2,9 +2,7 @@ package com.abovebytes.models.pymtswitch;
 
 import jakarta.validation.constraints.NotNull;
 
-public record PaymentRegistrationRequest(
-        // 1. Add these two components to the record header:
-        @NotNull(message = "application.name.required")
+public record SavePaymentRegistrationRequest(
         String applicationName,
 
         String transactionId,
@@ -17,8 +15,6 @@ public record PaymentRegistrationRequest(
 
         String createdBy,
 
-        String modifiedBy,
-
         @NotNull(message = "user.phone.required")
         String internalAppCustomerPhone,
 
@@ -29,31 +25,19 @@ public record PaymentRegistrationRequest(
         String status,
 
         String lang
-) implements PaymentSwitchBaseRequest {
+)  implements PaymentSwitchBaseRequest {
 
-        public PaymentRegistrationRequest withTransactionId(String transactionId) {
-                return new PaymentRegistrationRequest(
+        public SavePaymentRegistrationRequest withRequired(
+                String applicationName,
+                String transactionId,
+                String createdBy,
+                String lang) {
+                return new SavePaymentRegistrationRequest(
                         applicationName,
                         transactionId,
                         paymentIntentId,
                         internalAppCustomerId,
                         createdBy,
-                        modifiedBy,
-                        internalAppCustomerPhone,
-                        amount,
-                        status,
-                        lang
-                );
-        }
-
-        public PaymentRegistrationRequest withCreatedBy(String createdBy, String lang) {
-                return new PaymentRegistrationRequest(
-                        applicationName,
-                        transactionId,
-                        paymentIntentId,
-                        internalAppCustomerId,
-                        createdBy,
-                        modifiedBy,
                         internalAppCustomerPhone,
                         amount,
                         status,
@@ -63,14 +47,14 @@ public record PaymentRegistrationRequest(
 
         @Override
         public String toString() {
-                return "PaymentRegistrationRequest{" +
+                return "SavePaymentRegistrationRequest{" +
                         ", applicationName='" + applicationName + '\'' +
+                        ", transactionId='" + transactionId + '\'' +
                         ", lang='" + lang + '\'' +
                         ", paymentIntentId='" + paymentIntentId + '\'' +
                         ", internalAppCustomerId='" + internalAppCustomerId + '\'' +
                         ", internalAppCustomerPhone='" + internalAppCustomerPhone + '\'' +
                         ", createdBy='" + createdBy + '\'' +
-                        ", modifiedBy='" + modifiedBy + '\'' +
                         ", amount='" + amount + '\'' +
                         ", status='" + status + '\'' +
                         '}';

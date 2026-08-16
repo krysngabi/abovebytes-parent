@@ -14,4 +14,8 @@ public final class QueryParamConstants {
     public static final String END_DATE = "endDate";
 
     public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String REQUEST_SIGNATURE = "x-paymentswitch-signature";
+    public static final String APPLICATION_NAME = "applicationName";
+
+    public static final String TRANSACTION_ID = "TRANSACTION_ID";
 }

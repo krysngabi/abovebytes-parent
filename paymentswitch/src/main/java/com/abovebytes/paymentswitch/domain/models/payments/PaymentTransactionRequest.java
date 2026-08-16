@@ -1,8 +1,8 @@
 package com.abovebytes.paymentswitch.domain.models.payments;
 
+import com.abovebytes.enums.TransactionType;
 import com.abovebytes.paymentswitch.domain.models.enums.OperationType;
 import com.abovebytes.paymentswitch.domain.models.enums.PaymentSwitchProvider;
-import com.abovebytes.paymentswitch.domain.models.enums.TransactionType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

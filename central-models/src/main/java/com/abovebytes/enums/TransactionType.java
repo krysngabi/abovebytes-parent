@@ -1,4 +1,4 @@
-package com.abovebytes.paymentswitch.domain.models.enums;
+package com.abovebytes.enums;
 
 import java.util.Arrays;
 

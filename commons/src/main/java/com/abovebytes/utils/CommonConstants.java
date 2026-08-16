@@ -10,4 +10,6 @@ public class CommonConstants {
     public static final String ACCESS_CONTROL_EXPOSE_HEADERS = "x-total-elements, x-total-pages, x-is-last, x-current-page, x-page-size";
     public static final String LANG_PARAM = "lang";
     public static final String BEARER_ = "Bearer ";
+    public static final String CLIENT_SECRET = "client-secret";
+    public static final String X_CLIENT_SECRET = "x-" + CLIENT_SECRET;
 }

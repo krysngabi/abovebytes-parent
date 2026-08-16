@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
 @Component
 public class CookieUtils {
 
@@ -21,6 +24,23 @@ public class CookieUtils {
                 .path(path)
                 .sameSite(isLocal ? "Lax" : "Strict") // Lax for local so Postman/browser can send it
                 .maxAge(refreshTokenExpiration * 60)
+                .build();
+    }
+
+    public ResponseCookie clientSecretCookie(String clientSecret, String localPath, String devPath) {
+        boolean isLocal = activeProfile.equalsIgnoreCase("local");
+
+        String path = isLocal ? localPath : devPath;
+
+        String encodedClientSecret = Base64.getUrlEncoder()
+                .withoutPadding()
+                .encodeToString(clientSecret.getBytes(StandardCharsets.UTF_8));
+
+        return ResponseCookie.from("client_secret", encodedClientSecret)
+                .httpOnly(true)
+                .secure(!isLocal) // Secure = false for local, true for dev/prod
+                .path(path)
+                .sameSite(isLocal ? "Lax" : "Strict") // Lax for local so Postman/browser can send it
                 .build();
     }
 }

@@ -1,9 +1,10 @@
 package com.abovebytes.models.pymtswitch;
 
-import com.abovebytes.enums.AllowedApps;
+import com.abovebytes.enums.TransactionType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,6 +35,13 @@ public class PaymentIntentRequest {
     )
     @NotBlank(message = "product.name.required")
     private String productName;
+
+    @Schema(
+            description = "Unique transaction identifier for the payment request. If not provided, the Payment Switch generates a UUID.",
+            example = "550e8400-e29b-41d4-a716-446655440000"
+    )
+    @Nullable
+    private String transactionId;
 
     @Schema(
             description = "Customer phone number in E.164 format.",
@@ -80,6 +88,13 @@ public class PaymentIntentRequest {
     private String internalUserId; // internal.user.id.required
 
     @Schema(
+            description = "Type of payment transaction.",
+            implementation = TransactionType.class,
+            example = "TOP_UP"
+    )
+    TransactionType transactionType;
+
+    @Schema(
             description = "Previously stored payment card identifier.",
             example = "12"
     )
@@ -115,12 +130,6 @@ public class PaymentIntentRequest {
     private String applicationName;
 
     @Schema(
-            description = "Vault Transit signature used to verify the authenticity and integrity of the request.",
-            example = "vault:v1:ZKXMWYR/MUi7uSOdh1g44O0DijW30/kJ4IoDC47wkLr..."
-    )
-    private String requestSignature;
-
-    @Schema(
             description = "Indicates whether the request originates from the Central application.",
             example = "true",
             defaultValue = "false"
@@ -132,10 +141,16 @@ public class PaymentIntentRequest {
         return this;
     }
 
+    public PaymentIntentRequest withTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "PaymentIntentRequest{" +
                 ", productId=" + productId +
+                ", transactionId=" + transactionId +
                 ", price=" + price +
                 ", cardId=" + cardId +
                 ", applicationName=" + applicationName +
@@ -149,7 +164,6 @@ public class PaymentIntentRequest {
                 ", stripeConnectedAccountId=" + stripeConnectedAccountId +
                 ", driverConnectedAccountId=" + driverConnectedAccountId +
                 ", isFromCentralApp=" + isFromCentralApp +
-                ", requestSignature=" + requestSignature +
                 '}'; //testing direct push
     }
 }

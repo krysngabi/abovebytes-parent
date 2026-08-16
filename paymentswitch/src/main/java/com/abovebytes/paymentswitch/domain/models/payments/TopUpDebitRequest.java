@@ -1,6 +1,6 @@
 package com.abovebytes.paymentswitch.domain.models.payments;
 
-import com.abovebytes.paymentswitch.domain.models.enums.TransactionType;
+import com.abovebytes.enums.TransactionType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

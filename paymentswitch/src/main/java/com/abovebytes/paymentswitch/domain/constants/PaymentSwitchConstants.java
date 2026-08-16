@@ -1,9 +1,12 @@
 package com.abovebytes.paymentswitch.domain.constants;
 
+import com.abovebytes.utils.constants.CommonQueryParamConstants;
+
 public final class PaymentSwitchConstants {
 
     private PaymentSwitchConstants() {
     }
+
 
     public static final String REST_CONNECTION_TIMEOUT = "restTemplate.connectionTimeoutInSeconds";
     public static final String REST_READ_TIMEOUT = "restTemplate.readTimeoutInSeconds";
@@ -19,9 +22,11 @@ public final class PaymentSwitchConstants {
     public static final int RETRY_WAIT_IN_MILLISECONDS = 1000;
 
     public static final String REFRESH_TOKEN = "refresh_token";
-    public static final String localPath = "/api/paymentswitch/users/" + REFRESH_TOKEN;
-    public static final String devPath = "/paymentswitch/users/" + REFRESH_TOKEN;
+    public static final String LOCAL_PATH = "/api/paymentswitch/users/" + REFRESH_TOKEN;
+    public static final String DEV_PATH = "/paymentswitch/users/" + REFRESH_TOKEN;
     public static final String TRACE_ID = "payment_switch_transaction_id";
+    public static final String REFRESH_URI = "/users/" + REFRESH_TOKEN + "?" + CommonQueryParamConstants.LANG + "=";
+    public static final String AUTH_URI = "/users/login?" + CommonQueryParamConstants.LANG + "=";
 
     public static String[] AUTHORIZED_PATHS = new String[] {
             "/stripe-webhooks/**",

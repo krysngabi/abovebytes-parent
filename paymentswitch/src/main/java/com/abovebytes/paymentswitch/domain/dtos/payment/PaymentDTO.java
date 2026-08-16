@@ -1,6 +1,7 @@
 package com.abovebytes.paymentswitch.domain.dtos.payment;
 
 import com.abovebytes.paymentswitch.domain.models.enums.PaymentStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -30,7 +31,7 @@ public class PaymentDTO {
 
     private String amount;
 
-    private PaymentStatus status;
+    private PaymentStatus paymentStatus;
 
     private LocalDateTime createDate;
 
@@ -63,4 +64,10 @@ public class PaymentDTO {
     private String switchTransactionId;
 
     private Boolean fromCentral;
+
+    private Integer errorCode;
+    private Long timedResponseTime;
+    private String message;
+    private String declineReason;
+    private String transactionId;
 }

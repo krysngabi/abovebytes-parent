@@ -19,7 +19,10 @@ public record AddApplicationClientRequest(
         String email,
 
         @NotNull(message = "roles.required")
-        List<String> roleValues
+        List<String> roleValues,
+
+        @NotNull(message = "country.id.required")
+        Long countryId
 ) {
 
 
@@ -27,6 +30,7 @@ public record AddApplicationClientRequest(
     public String toString() {
         return "AddApplicationClientRequest {" +
                 "  appName='" + appName.name() + '\'' +
+                ", countryId='" + countryId + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", role='" + (roleValues == null || roleValues.isEmpty() ? "No roles" : Arrays.toString(roleValues.toArray())) + '\'' +
