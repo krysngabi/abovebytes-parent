@@ -12,4 +12,5 @@ public class CommonConstants {
     public static final String BEARER_ = "Bearer ";
     public static final String CLIENT_SECRET = "client-secret";
     public static final String X_CLIENT_SECRET = "x-" + CLIENT_SECRET;
+    public static final String X_MOBILE_TRANSACTION_ID = "x-mobile-transaction-id";
 }
