@@ -29,7 +29,7 @@ public final class PaymentSwitchConstants {
     public static final String AUTH_URI = "/users/login?" + CommonQueryParamConstants.LANG + "=";
 
     public static String[] AUTHORIZED_PATHS = new String[] {
-            "/stripe-webhooks/**",
+            "/actuator/health", "/stripe-webhooks/**", "/properties/stripe-publishable-key",
             "/users/login", "/users/refresh-token",
             "/swagger-resources/**", "/swagger-resources", "/configuration/ui",
             "/configuration/security", "/swagger-ui.html", "/webjars/**", "/v3/api-docs/**", "/swagger-ui/**"};
