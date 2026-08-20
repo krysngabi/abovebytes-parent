@@ -18,4 +18,5 @@ public final class QueryParamConstants {
     public static final String APPLICATION_NAME = "applicationName";
 
     public static final String TRANSACTION_ID = "TRANSACTION_ID";
+    public static final String X_TRANSACTION_ID = "x-transaction-id";
 }

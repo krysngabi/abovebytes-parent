@@ -16,6 +16,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EmergencyResponse extends BaseResponse {
     private UUID emergencyCallId;
+    private String requestSignature;
     private String senderId;
     private LocalDateTime createdAt;
     private ArrayList<String> failedQueues;

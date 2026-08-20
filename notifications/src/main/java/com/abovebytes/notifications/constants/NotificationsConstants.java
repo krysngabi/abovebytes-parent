@@ -16,10 +16,7 @@ public final class NotificationsConstants {
     public static final String devPath = "/notifications/users/refresh_token";
     public static final String APP_PROPERTIES_FILE = "notifications.properties";
     public static final String TRACE_ID = "notifications_req_transaction_id";
-    public static final String WEBSOCKET_ENDPOINT = "/ws";
-    public static final String SIMP_SESSION_ID = "simpSessionId";
-    public static final String BROADCAST_APP_TOPIC = "/topic/broadcast/notifications";
-    public static final String WS_DESTINATION = "/notifications-app-ws";
+
     public static final String CENTRAL_APP_NAME = "central-app-name";
     private static final String PAYMENT_STATUS_VALUE = "Paiement";
     public static final String SMTP_HOST = "smtp-host";
@@ -46,5 +43,8 @@ public final class NotificationsConstants {
             "/email/central/temp-password",  "/properties/search-name", "/properties/search-app",
             "/swagger-resources/**", "/swagger-resources", "/configuration/ui",
             "/configuration/security", "/swagger-ui.html", "/webjars/**", "/v3/api-docs/**", "/swagger-ui/**"};
+
+    public static final String X_STOMP_CONNECT_REQUEST = "x-stomp-connect-request";
+    public static final String X_TIME_STAMP = "x-time-stamp";
 
 }
