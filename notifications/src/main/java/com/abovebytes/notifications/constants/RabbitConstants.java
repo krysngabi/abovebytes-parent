@@ -15,6 +15,21 @@ public final class RabbitConstants {
     public static final String EMERGENCY_EXCHANGE = "emergency.exchange";
 
     /**
+     * Prefix for the per-call STOMP destination used to broadcast live
+     * tracking updates (e.g. location, running status) for a specific
+     * emergency call. The full destination is formed by appending the
+     * emergency call's UUID directly to this prefix, e.g.
+     * {@code EMERGENCY_CALL_TRACK_TOPIC_PREFIX + emergencyCallId} ->
+     * {@code "/topic/dispatcher.track.emergency.call.0cf50bcf-05af-440f-92bf-2ed824c0b982"}.
+     * Dispatcher clients subscribe to the resolved destination to receive
+     * real-time tracking updates for that specific call only.
+     */
+//    webSocketService.publishToDestination(
+//    RabbitConstants.EMERGENCY_CALL_TRACK_TOPIC_PREFIX + emergencyCallId,
+//    trackingPayload);
+    public static final String EMERGENCY_CALL_TRACK_TOPIC_PREFIX = "/topic/dispatcher.track.emergency.call.";
+
+    /**
      * Queue that receives newly registered emergency calls before any
      * dispatcher has claimed them. Consumed by
      * {@code EmergencyCallListener#handleEmergencyCallBroadcast} and relayed
@@ -64,7 +79,7 @@ public final class RabbitConstants {
      * dispatcher.
      */
     public static final String EMERGENCY_CALL_ASSIGNED_TOPIC =
-            "/topic/emergency.dispatcher.assigned";
+            "/topic/emergency.call.dispatcher.assigned";
 
     /**
      * Path Spring registers the STOMP-over-WebSocket endpoint on, used by
