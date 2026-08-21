@@ -72,6 +72,21 @@ public class RabbitMQConfig {
                 .with(RabbitConstants.EMERGENCY_CALL_ROUTING_KEY);
     }
 
+    @Bean
+    public Queue emergencyCallAssignedQueue() {
+        return QueueBuilder
+                .durable(RabbitConstants.EMERGENCY_CALL_ASSIGNED_QUEUE)
+                .build();
+    }
+
+    @Bean
+    public Binding emergencyCallAssignedBinding() {
+        return BindingBuilder
+                .bind(emergencyCallAssignedQueue())
+                .to(emergencyExchange())
+                .with(RabbitConstants.EMERGENCY_CALL_ASSIGNED_ROUTING_KEY);
+    }
+
     /**
      * Serializes/deserializes message bodies as JSON instead of Java's default
      * Serializable format, so payloads are readable across services and languages.

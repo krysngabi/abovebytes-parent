@@ -45,4 +45,7 @@ public class EmergencyCallBroadcastDTO {
 
     @NotNull(message = "emergency.call.date.required")
     private String createdAt;
+
+    private Long dispatcherId;
+    private String dispatcherName;
 }

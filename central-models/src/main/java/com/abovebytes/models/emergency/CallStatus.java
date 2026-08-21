@@ -10,6 +10,17 @@ import org.springframework.context.i18n.LocaleContextHolder;
 @Getter
 public enum CallStatus {
 
+    ASSIGNED(
+            "Assigné",
+            "Assigned",
+            "MEDIUM",
+            "#2563EB",
+            "Le ticket a été attribué à un technicien ou à une équipe pour traitement.",
+            "The ticket has been assigned to a technician or team for processing.",
+            "Blue",
+            "Primary Action"
+    ),
+
     // 1. INTAKE & TRIAGE POOL
     PENDING(
             "En attente",
