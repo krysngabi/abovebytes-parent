@@ -20,4 +20,5 @@ public class AppProperty {
     private Integer otpMaxDurationSeconds;
     private Integer otpMaxAttempts;
     private String wsEmergencyUrl;
+    private String wsEmergencyCallTopicPrefix;
 }
