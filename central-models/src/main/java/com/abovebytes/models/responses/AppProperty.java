@@ -21,4 +21,5 @@ public class AppProperty {
     private Integer otpMaxAttempts;
     private String wsEmergencyUrl;
     private String wsEmergencyCallTopicPrefix;
+    private String wsEmergencyCallAssignedTopic;
 }
