@@ -17,6 +17,8 @@ import java.util.UUID;
 public class EmergencyResponse extends BaseResponse {
     private UUID emergencyCallId;
     private String senderId;
+    private Long dispatcherId;
+    private String dispatcherName;
     private LocalDateTime createdAt;
     private ArrayList<String> failedQueues;
 }
