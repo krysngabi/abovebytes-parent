@@ -52,6 +52,42 @@ public class RabbitMQConfig {
                 .with(RabbitConstants.EMERGENCY_CALL_ROUTING_KEY);
     }
 
+    // --- Emergency call status (per-citizen) ---
+
+    @Bean
+    public DirectExchange emergencyCallStatusDlx() {
+        return new DirectExchange(RabbitConstants.EMERGENCY_CALL_STATUS_DLX);
+    }
+
+    @Bean
+    public Queue emergencyCallStatusDlq() {
+        return QueueBuilder.durable(RabbitConstants.EMERGENCY_CALL_STATUS_DLQ).build();
+    }
+
+    @Bean
+    public Binding emergencyCallStatusDlqBinding() {
+        return BindingBuilder
+                .bind(emergencyCallStatusDlq())
+                .to(emergencyCallStatusDlx())
+                .with(RabbitConstants.EMERGENCY_CALL_STATUS_ROUTING_KEY);
+    }
+
+    @Bean
+    public Queue emergencyCallStatusQueue() {
+        return QueueBuilder.durable(RabbitConstants.EMERGENCY_CALL_STATUS_QUEUE)
+                .withArgument("x-dead-letter-exchange", RabbitConstants.EMERGENCY_CALL_STATUS_DLX)
+                .withArgument("x-dead-letter-routing-key", RabbitConstants.EMERGENCY_CALL_STATUS_ROUTING_KEY)
+                .build();
+    }
+
+    @Bean
+    public Binding emergencyCallStatusBinding(TopicExchange emergencyExchange) {
+        return BindingBuilder
+                .bind(emergencyCallStatusQueue())
+                .to(emergencyExchange)
+                .with(RabbitConstants.EMERGENCY_CALL_STATUS_ROUTING_KEY);
+    }
+
     /**
      * The primary queue holding pending emergency call broadcasts.
      * Durable + dead-lettered: a message that repeatedly fails processing

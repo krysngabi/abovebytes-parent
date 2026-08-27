@@ -20,5 +20,6 @@ public class EmergencyResponse extends BaseResponse {
     private Long dispatcherId;
     private String dispatcherName;
     private LocalDateTime createdAt;
+    private String requestSignature;
     private ArrayList<String> failedQueues;
 }

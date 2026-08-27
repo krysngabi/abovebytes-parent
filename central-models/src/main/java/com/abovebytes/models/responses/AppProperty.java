@@ -22,4 +22,5 @@ public class AppProperty {
     private String wsEmergencyUrl;
     private String wsEmergencyCallTopicPrefix;
     private String wsEmergencyCallAssignedTopic;
+    private String wsClientEmergencyCallStatusDestination;
 }

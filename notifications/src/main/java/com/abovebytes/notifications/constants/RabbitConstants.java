@@ -8,6 +8,8 @@ import java.util.List;
  * the notification service binds {@link #EMERGENCY_CALL_QUEUE} to that exchange/key and consumes from it.
  */
 public final class RabbitConstants {
+    public static final String USER_DESTINATION_PREFIX = "/user";
+
     /**
      * Name of the topic exchange used to route all emergency-call-related
      * messages (broadcast, assigned, etc.) to their respective bound queues.
@@ -74,6 +76,20 @@ public final class RabbitConstants {
             "emergency.call.assigned.queue";
 
     /**
+     * Dead-letter exchange associated with {@link #EMERGENCY_CALL_STATUS_QUEUE}.
+     */
+    public static final String EMERGENCY_CALL_STATUS_DLX = "emergency.call.status.dlx";
+
+    /**
+     * Dead-letter queue for {@link #EMERGENCY_CALL_STATUS_QUEUE}. Messages that
+     * cannot be processed after retries (e.g. malformed payload, unresolvable
+     * userId, relay rejection) are routed here via {@link #EMERGENCY_CALL_STATUS_DLX}
+     * so per-citizen status update failures remain visible and reprocessable
+     * instead of being silently lost.
+     */
+    public static final String EMERGENCY_CALL_STATUS_DLQ = "emergency.call.status.dlq";
+
+    /**
      * STOMP destination that dispatcher clients subscribe to in order to be
      * notified in real time when an emergency call is assigned to a
      * dispatcher.
@@ -116,6 +132,63 @@ public final class RabbitConstants {
     public static final String WS_DESTINATION = "/notifications-app-ws";
 
     /**
+     * Routing key used to publish a per-citizen emergency call status update
+     * (e.g. "your call was assigned") to {@link #EMERGENCY_EXCHANGE}, bound to
+     * {@link #EMERGENCY_CALL_STATUS_QUEUE}. Unlike {@link #EMERGENCY_CALL_ASSIGNED_ROUTING_KEY},
+     * this is intended for exactly one recipient — the citizen who placed the
+     * call — not a dispatcher broadcast.
+     */
+    public static final String EMERGENCY_CALL_STATUS_ROUTING_KEY = "emergency.call.status";
+
+    /**
+     * Queue that receives per-citizen call status update events. Consumed by
+     * {@code EmergencyCallListener#handleCallStatusUpdate}, which resolves the
+     * target user id from the payload and relays it privately via
+     * {@code convertAndSendToUser(userId, EMERGENCY_CALL_STATUS_QUEUE_SUFFIX, payload)}.
+     */
+    public static final String EMERGENCY_CALL_STATUS_QUEUE = "emergency.call.status.queue";
+
+    /**
+     * Destination suffix passed as the second argument to
+     * {@code convertAndSendToUser(...)}. MUST start with {@link #RELAY_QUEUE_PREFIX}
+     * ("/queue") — Spring's UserDestinationMessageHandler prepends "/user/{userId}"
+     * internally and resolves the whole thing down to a session-scoped
+     * "/queue/..." destination before handing it to the broker relay. This is
+     * the exact class of bug noted above {@link #RELAY_DESTINATION_PREFIXES}:
+     * if this constant were missing its leading slash, or a bare string like
+     * "queue/emergency-call-status" were passed instead, the resolved
+     * destination would lose the "/queue" prefix the relay checks for and
+     * RabbitMQ's STOMP adapter would reject it with "Invalid destination".
+     * Clients subscribe to "/user/queue/emergency-call-status" — never to this
+     * constant's literal value directly.
+     */
+    public static final String EMERGENCY_CALL_STATUS_QUEUE_SUFFIX = "/queue/emergency-call-status";
+
+    /**
+     * Fully-resolved STOMP destination string that clients (citizen app) must
+     * subscribe to in order to receive their own per-call status updates —
+     * {@code "/user" + EMERGENCY_CALL_STATUS_QUEUE_SUFFIX}, i.e.
+     * {@code "/user/queue/emergency-call-status"}.
+     * <p>
+     * This is distinct from {@link #EMERGENCY_CALL_STATUS_QUEUE_SUFFIX}, which is
+     * the value passed server-side as the destination argument to
+     * {@code convertAndSendToUser(userId, EMERGENCY_CALL_STATUS_QUEUE_SUFFIX, payload)}.
+     * The {@link #USER_DESTINATION_PREFIX} ("/user") is a marker Spring's
+     * {@code UserDestinationMessageHandler} strips and rewrites internally on
+     * the sending side, but clients must include it literally when subscribing —
+     * the two sides of this flow use different strings by design, not by
+     * accident.
+     * <p>
+     * Exposing this precomputed constant (e.g. via app config served to the
+     * Flutter client as {@code wsEmergencyCallStatusQueue}) avoids each side
+     * hand-typing and potentially drifting out of sync with
+     * {@link #EMERGENCY_CALL_STATUS_QUEUE_SUFFIX} — if the suffix ever changes,
+     * this constant changes with it automatically.
+     */
+    public static final String CLIENT_EMERGENCY_CALL_STATUS_DESTINATION =
+            USER_DESTINATION_PREFIX + EMERGENCY_CALL_STATUS_QUEUE_SUFFIX; // "/user/queue/emergency-call-status"
+
+    /**
      * Prefix used when constructing a per-session heartbeat identifier
      * (e.g. combined with a session ID) to track and manage WebSocket
      * keep-alive heartbeats for an individual connected client.
@@ -128,7 +201,6 @@ public final class RabbitConstants {
     // the leading prefix (see explanation below).
     public static final String RELAY_TOPIC_PREFIX = "/topic";
     public static final String RELAY_QUEUE_PREFIX = "/queue";
-    public static final String USER_DESTINATION_PREFIX = "/user";
     public static final List<String> RELAY_DESTINATION_PREFIXES = List.of(
             RELAY_TOPIC_PREFIX,
             RELAY_QUEUE_PREFIX
