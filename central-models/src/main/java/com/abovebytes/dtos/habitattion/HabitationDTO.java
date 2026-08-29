@@ -1,14 +1,12 @@
 package com.abovebytes.dtos.habitattion;
 
-
-import com.abovebytes.enums.Status;
+import com.abovebytes.enums.HabitationStatus;
 import com.abovebytes.models.responses.BaseResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -51,7 +49,7 @@ public class HabitationDTO extends BaseResponse implements Serializable {
     private Long streetId;
     private LocalDateTime createdAt;
     private String tempPassword;
-    private Status status;
+    private HabitationStatus status;
     private Long createdBy;
     private boolean isForTest;
     private boolean isDeletable;

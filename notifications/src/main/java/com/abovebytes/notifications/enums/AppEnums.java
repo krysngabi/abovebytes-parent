@@ -18,5 +18,7 @@ public enum AppEnums {
     CENTRAL_BASE_URL,
     CENTRAL_AUTH_URI,
     NotificationService,
+    RABBITMQ_USER,
+    RABBITMQ_PASSWORD,
     lang;
 }

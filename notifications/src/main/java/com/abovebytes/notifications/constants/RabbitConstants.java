@@ -205,6 +205,5 @@ public final class RabbitConstants {
             RELAY_TOPIC_PREFIX,
             RELAY_QUEUE_PREFIX
     );
-
     private RabbitConstants() {}
 }
