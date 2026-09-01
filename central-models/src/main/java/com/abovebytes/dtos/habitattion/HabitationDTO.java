@@ -25,8 +25,12 @@ public class HabitationDTO extends BaseResponse implements Serializable {
     private String systemId;
     private String address;
     private String zipCode;
+    private Long ownerId;
     private String ownerName;
     private String ownerPhone;
+    private Long coOwnerId;
+    private String coOwnerName;
+    private String coOwnerPhone;
     private String houseStatus;
     private String statusColor;
     private String creationDate;
