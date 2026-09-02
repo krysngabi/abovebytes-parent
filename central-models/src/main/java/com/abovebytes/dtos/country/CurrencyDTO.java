@@ -19,4 +19,15 @@ public class CurrencyDTO implements Serializable {
     private String currencyName;
     private String currencySigle;
     private Status status;
+
+    @Override
+    public String toString() {
+        return "CurrencyDTO{" +
+                "currencyId=" + currencyId +
+                ", currencyCode='" + currencyCode + '\'' +
+                ", currencyName='" + currencyName + '\'' +
+                ", currencySigle='" + currencySigle + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

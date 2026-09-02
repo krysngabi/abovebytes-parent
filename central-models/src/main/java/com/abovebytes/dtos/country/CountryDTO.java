@@ -22,4 +22,17 @@ public class CountryDTO extends ApiError<Void> implements Serializable {
     private String phonePrefix;
     private Status status;
     private CurrencyDTO currency;
+
+    @Override
+    public String toString() {
+        return "CountryDTO{" +
+                "id=" + id +
+                ", label='" + label + '\'' +
+                ", code='" + code + '\'' +
+                ", timeZone='" + timeZone + '\'' +
+                ", phonePrefix='" + phonePrefix + '\'' +
+                ", status=" + status +
+                ", currency=" + currency +
+                '}';
+    }
 }
