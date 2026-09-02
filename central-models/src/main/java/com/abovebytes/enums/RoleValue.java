@@ -28,7 +28,8 @@ public enum RoleValue {
     CAR_OWNER(Icons.directions_car, "Icons", "Car Owner", "Propriétaire de voiture", false, false, null),
     DOCUMENT_VALIDATOR(Icons.person_pin_circle, "Icons", "Document validator", "Validateur des documents", false, false, null),
     DOCTOR(Icons.local_hospital, "Icons", "Doctor", "Médecin", false, true, null),
-    MESSAGE_OPERATOR(Icons.message, "Icons", "Message operator", "Opérateur message", true, false, null);
+    MESSAGE_OPERATOR(Icons.message, "Icons", "Message operator", "Opérateur message", true, false, null),
+    USER(Icons.person_pin_circle, "Icons", "User", "Utilisateur", false, false, null);
 
     private final String icon;
     private final String iconPrefix;
