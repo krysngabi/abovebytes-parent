@@ -48,4 +48,7 @@ public class EmergencyCallBroadcastDTO {
 
     private Long dispatcherId;
     private String dispatcherName;
+
+    @NotNull(message = "emergency.call.central.user.id.required")
+    private Long centralUserId;
 }

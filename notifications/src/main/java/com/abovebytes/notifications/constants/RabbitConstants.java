@@ -8,6 +8,8 @@ import java.util.List;
  * the notification service binds {@link #EMERGENCY_CALL_QUEUE} to that exchange/key and consumes from it.
  */
 public final class RabbitConstants {
+
+    public static final String CENTRAL_USER_ID = "centralUserId";
     public static final String USER_DESTINATION_PREFIX = "/user";
 
     /**

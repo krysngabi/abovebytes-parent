@@ -89,4 +89,14 @@ public enum RoleValue {
     public static List<RoleValue> getAllowedToBYPassTestMode() {
         return List.of(SUPER_ADMIN);
     }
+
+    /**
+     * The role granted to a user when removing another role would otherwise
+     * leave them with no roles at all. Ensures every user retains at least
+     * one minimal, valid role so they can still authenticate and use the
+     * system.
+     */
+    public static RoleValue getFallbackRole() {
+        return USER;
+    }
 }
