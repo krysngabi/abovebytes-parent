@@ -1,4 +1,4 @@
-package com.abovebytes.notifications.models.websocket;
+package com.abovebytes.notifications.models.websocket.emergency;
 
 import com.abovebytes.notifications.models.BaseResponse;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

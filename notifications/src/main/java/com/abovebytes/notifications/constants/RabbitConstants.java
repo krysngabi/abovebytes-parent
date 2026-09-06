@@ -18,6 +18,16 @@ public final class RabbitConstants {
      */
     public static final String EMERGENCY_EXCHANGE = "emergency.exchange";
 
+    public static final String EMERGENCY_CHAT_EXCHANGE =
+            "emergency.chat.exchange";
+
+    public static final String EMERGENCY_CHAT_QUEUE =
+            "emergency.chat.queue";
+
+    public static final String EMERGENCY_CHAT_ROUTING_KEY =
+            "emergency.chat";
+    public static final String EMERGENCY_CHAT_QUEUE_SUFFIX =
+            "/queue/emergency-chat";
     /**
      * Prefix for the per-call STOMP destination used to broadcast live
      * tracking updates (e.g. location, running status) for a specific
@@ -190,6 +200,29 @@ public final class RabbitConstants {
     public static final String CLIENT_EMERGENCY_CALL_STATUS_DESTINATION =
             USER_DESTINATION_PREFIX + EMERGENCY_CALL_STATUS_QUEUE_SUFFIX; // "/user/queue/emergency-call-status"
 
+    /**
+     * Fully-resolved STOMP destination string that clients (citizen app) must
+     * subscribe to in order to receive their own per-call emergency chat messages —
+     * {@code "/user" + EMERGENCY_CHAT_QUEUE_SUFFIX}, i.e.
+     * {@code "/user/queue/emergency-chat"}.
+     * <p>
+     * This is distinct from {@link #EMERGENCY_CHAT_QUEUE_SUFFIX}, which is
+     * the value passed server-side as the destination argument to
+     * {@code convertAndSendToUser(userId, EMERGENCY_CHAT_QUEUE_SUFFIX, payload)}.
+     * The {@link #USER_DESTINATION_PREFIX} ("/user") is a marker Spring's
+     * {@code UserDestinationMessageHandler} strips and rewrites internally on
+     * the sending side, but clients must include it literally when subscribing —
+     * the two sides of this flow use different strings by design, not by
+     * accident.
+     * <p>
+     * Exposing this precomputed constant (e.g. via app config served to the
+     * Flutter client as {@code wsEmergencyChatQueue}) avoids each side
+     * hand-typing and potentially drifting out of sync with
+     * {@link #EMERGENCY_CHAT_QUEUE_SUFFIX} — if the suffix ever changes,
+     * this constant changes with it automatically.
+     */
+    public static final String CLIENT_EMERGENCY_CALL_CHAT_DESTINATION =
+            USER_DESTINATION_PREFIX + EMERGENCY_CHAT_QUEUE_SUFFIX;
     /**
      * Prefix used when constructing a per-session heartbeat identifier
      * (e.g. combined with a session ID) to track and manage WebSocket

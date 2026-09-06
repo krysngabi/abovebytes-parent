@@ -19,8 +19,11 @@ public class AppProperty {
     private Integer otpCodeLength;
     private Integer otpMaxDurationSeconds;
     private Integer otpMaxAttempts;
+    private String wsDestination;
+    private String wsEmergencyCallSuffix;
     private String wsEmergencyUrl;
     private String wsEmergencyCallTopicPrefix;
     private String wsEmergencyCallAssignedTopic;
     private String wsClientEmergencyCallStatusDestination;
+    private String wsClientEmergencyCallChatDestination;
 }

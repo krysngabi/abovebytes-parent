@@ -1,10 +1,9 @@
-package com.abovebytes.notifications.models.websocket;
+package com.abovebytes.notifications.models.websocket.emergency;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * Envelope published onto {@link com.abovebytes.notifications.constants.RabbitConstants#EMERGENCY_EXCHANGE}

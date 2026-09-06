@@ -1,4 +1,4 @@
-package com.abovebytes.notifications.models.websocket;
+package com.abovebytes.notifications.models.websocket.emergency;
 
 import com.abovebytes.models.emergency.CallPriority;
 import com.abovebytes.models.emergency.CallStatus;
@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -17,13 +19,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmergencyCallBroadcastDTO {
+public class EmergencyCallBroadcastDTO implements Serializable  {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @NotNull(message = "emergency.call.id.required")
     private UUID emergencyCallId;
 
     @NotNull(message = "emergency.call.status.required")
-    private CallStatus status;
+    private CallStatus callStatus;
 
     @NotNull(message = "emergency.call.priority.required")
     private CallPriority priorityLevel;
