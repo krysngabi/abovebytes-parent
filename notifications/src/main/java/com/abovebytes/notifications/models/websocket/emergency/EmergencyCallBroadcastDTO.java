@@ -53,6 +53,6 @@ public class EmergencyCallBroadcastDTO implements Serializable  {
     private Long dispatcherId;
     private String dispatcherName;
 
-    @NotNull(message = "emergency.call.central.user.id.required")
-    private Long centralUserId;
+    @NotNull(message = "emergency.call.caller.user.id.required")
+    private Long callerUserId;
 }

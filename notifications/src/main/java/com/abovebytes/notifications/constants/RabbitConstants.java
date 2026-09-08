@@ -9,7 +9,7 @@ import java.util.List;
  */
 public final class RabbitConstants {
 
-    public static final String CENTRAL_USER_ID = "centralUserId";
+    public static final String CALLER_USER_ID = "callerUserId";
     public static final String USER_DESTINATION_PREFIX = "/user";
 
     /**
