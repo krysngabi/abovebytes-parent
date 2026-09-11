@@ -4,6 +4,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public record AircraftTelemetryRequest(
 
+        @Schema(example = "DJI Mini 4 Pro")
+        String deviceName,
+
+        @Schema(example = "87")
+        Integer batteryPercent,
+
         @Schema(example = "34.063191")
         Double latitude,
 
@@ -30,6 +36,21 @@ public record AircraftTelemetryRequest(
 
         @Schema(description = "Aircraft Z position")
         Double z,
+
+        @Schema(description = "Aircraft X velocity")
+        Double vx,
+
+        @Schema(description = "Aircraft Y velocity")
+        Double vy,
+
+        @Schema(description = "Aircraft Z velocity")
+        Double vz,
+
+        @Schema(description = "Whether the aircraft is currently flying")
+        Boolean isFlying,
+
+        @Schema(description = "Aircraft flight time in seconds")
+        Integer flightTimeSeconds,
 
         @Schema(example = "1789060000000")
         Long timestamp
