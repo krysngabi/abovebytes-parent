@@ -45,6 +45,10 @@ public record WaypointMissionRequest(
         @Valid
         PerimeterInspectionParams perimeterInspection,
 
+        @JsonProperty("simpleHopTest")
+        @Valid
+        SimpleHopTestParams simpleHopTest,
+
         @JsonProperty("waypoints")
 //        @NotEmpty
         List<@Valid WaypointRequest> waypoints
@@ -108,6 +112,7 @@ public record WaypointMissionRequest(
             case CUSTOM -> waypoints != null && !waypoints.isEmpty();
             case SQUARE_PERIMETER, GRID_SURVEY, ORBIT -> pattern != null;
             case PERIMETER_INSPECTION -> perimeterInspection != null;
+            case SIMPLE_HOP_TEST -> simpleHopTest != null;
         };
     }
 
