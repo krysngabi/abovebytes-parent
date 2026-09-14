@@ -57,5 +57,6 @@ public class HabitationDTO extends BaseResponse implements Serializable {
     private Long createdBy;
     private boolean isForTest;
     private boolean isDeletable;
+    private boolean isPrimary;
 
 }
